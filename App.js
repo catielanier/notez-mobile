@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
 import LanguageContextProvider from "./contexts/LanguageContext";
 import ComponentContainer from "./ComponentContainer";
@@ -25,12 +24,3 @@ export default function App() {
     </PaperProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
