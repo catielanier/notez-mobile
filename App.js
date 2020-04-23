@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
 import LanguageContextProvider from "./contexts/LanguageContext";
 import ComponentContainer from "./ComponentContainer";
+import UserContextProvider from "./contexts/UserContext";
 
 const theme = {
   ...DefaultTheme,
@@ -17,7 +18,9 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       <LanguageContextProvider>
-        <ComponentContainer />
+        <UserContextProvider>
+          <ComponentContainer />
+        </UserContextProvider>
       </LanguageContextProvider>
     </PaperProvider>
   );
