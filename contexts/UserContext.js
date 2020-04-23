@@ -18,8 +18,8 @@ const UserContextProvider = (props) => {
   const { language } = useContext(LanguageContext);
 
   useEffect(() => {
-    if (user) {
-      axios.get(`/api/users/${user}`).then((res) => {
+    if (typeof user == "string") {
+      axios.get(`https://checkthenotez.com/api/users/${user}`).then((res) => {
         const { role: userRole } = res.data.data;
         setRole(userRole);
       });
@@ -39,12 +39,15 @@ const UserContextProvider = (props) => {
     setError(null);
 
     try {
-      const res = await axios.post("/api/users/login", {
-        data: {
-          email,
-          password,
-        },
-      });
+      const res = await axios.post(
+        "https://checkthenotez.com/api/users/login",
+        {
+          data: {
+            email,
+            password,
+          },
+        }
+      );
       if (res) {
         const { token, id } = res.data.data;
         setToken(token);
@@ -71,18 +74,21 @@ const UserContextProvider = (props) => {
     setError(null);
     if (password === verifyPassword) {
       try {
-        const res = await axios.post("/api/users/signup", {
-          data: {
-            email,
-            username,
-            password,
-            realName,
-            country,
-          },
-          params: {
-            language,
-          },
-        });
+        const res = await axios.post(
+          "https://checkthenotez.com/api/users/signup",
+          {
+            data: {
+              email,
+              username,
+              password,
+              realName,
+              country,
+            },
+            params: {
+              language,
+            },
+          }
+        );
         setLoading(false);
         setSuccess(true);
       } catch (e) {
@@ -101,7 +107,7 @@ const UserContextProvider = (props) => {
     setError(false);
     try {
       await axios
-        .put("/api/users/role", {
+        .put("https://checkthenotez.com/api/users/role", {
           data: {
             id,
             role,
@@ -134,7 +140,7 @@ const UserContextProvider = (props) => {
     if (oldPassword !== "") {
       if (newPassword !== "" && newPassword === verifyNewPassword) {
         await axios
-          .put(`/api/users/${user}`, {
+          .put(`https://checkthenotez.com/api/users/${user}`, {
             data: {
               username,
               email,
@@ -161,7 +167,7 @@ const UserContextProvider = (props) => {
       }
     } else {
       await axios
-        .put(`/api/users/${user}`, {
+        .put(`https://checkthenotez.com/api/users/${user}`, {
           data: {
             username,
             email,
@@ -185,7 +191,7 @@ const UserContextProvider = (props) => {
     this.loading(false);
     this.error(null);
     await axios
-      .post("/api/users/forgot", { email, language })
+      .post("https://checkthenotez.com/api/users/forgot", { email, language })
       .then(() => {
         setLoading(false);
         setSuccess(true);
@@ -201,7 +207,7 @@ const UserContextProvider = (props) => {
     setError(null);
     if (password === verifyPassword) {
       await axios
-        .post("/api/users/reset", { key, password })
+        .post("https://checkthenotez.com/api/users/reset", { key, password })
         .then((_) => {
           setLoading(false);
           setSuccess(true);
