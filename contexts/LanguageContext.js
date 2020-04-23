@@ -18,7 +18,6 @@ const LanguageContextProvider = (props) => {
       const userLanguage = locale;
       setLanguage(userLanguage);
     }
-    console.log(language);
   }, [language]);
   return (
     <LanguageContext.Provider value={{ language }}>
