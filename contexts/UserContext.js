@@ -10,7 +10,7 @@ import { noMatch } from "../data/locales";
 export const UserContext = createContext();
 
 const UserContextProvider = (props) => {
-  const [user, setUser] = useState(AsyncStorage.getItem("notezId") || null);
+  const [user, setUser] = useState(null);
   const [role, setRole] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,10 +18,12 @@ const UserContextProvider = (props) => {
   const { language } = useContext(LanguageContext);
 
   useEffect(() => {
-    if (typeof user == "string") {
+    const newUser = AsyncStorage.getItem("notezId");
+    if (typeof newUser == "string") {
       axios.get(`https://checkthenotez.com/api/users/${user}`).then((res) => {
         const { role: userRole } = res.data.data;
         setRole(userRole);
+        setUser(newUser);
       });
     } else {
       setRole(null);
