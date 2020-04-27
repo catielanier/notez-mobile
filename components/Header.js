@@ -4,6 +4,7 @@ import { UserContext } from "../contexts/UserContext";
 import { LanguageContext } from "../contexts/LanguageContext";
 import localeSelect from "../services/localeSelect";
 import { title } from "../data/locales";
+import * as RootNavigation from "../RootNavigation.js";
 
 function Header() {
   const { user } = useContext(UserContext);
@@ -17,7 +18,11 @@ function Header() {
             title={localeSelect(language, title)}
             color="#ffffff"
           />
-          <Appbar.Action icon="login" color="#ffffff" />
+          <Appbar.Action
+            icon="login"
+            color="#ffffff"
+            onPress={() => RootNavigation.navigate("Login")}
+          />
           <Appbar.Action icon="account-plus" color="#ffffff" />
         </>
       )}

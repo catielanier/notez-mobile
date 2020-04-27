@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import GameNotes from "./components/GameNotes";
 import { UserContext } from "./contexts/UserContext";
+import { navigationRef } from "./RootNavigation";
 
 const Stack = createStackNavigator();
 
@@ -15,7 +16,7 @@ export default function ComponentContainer() {
   const { user } = useContext(UserContext);
   return (
     <View>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <Header />
         <Stack.Navigator initialRouteName="Home">
           {user ? (
