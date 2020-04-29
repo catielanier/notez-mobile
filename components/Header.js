@@ -1,16 +1,22 @@
 import React, { useContext } from "react";
 import { Appbar } from "react-native-paper";
+
+// Contexts
 import { UserContext } from "../contexts/UserContext";
 import { LanguageContext } from "../contexts/LanguageContext";
+import { MenuContext } from "../contexts/MenuContext";
+
+// Locales
 import localeSelect from "../services/localeSelect";
 import { title } from "../data/locales";
 
 function Header({ navigation }) {
   const { user } = useContext(UserContext);
   const { language } = useContext(LanguageContext);
+  const { showMenu } = useContext(MenuContext);
   return (
     <Appbar.Header>
-      <Appbar.Action icon="menu" />
+      <Appbar.Action icon="menu" onPress={showMenu} />
       {!user && (
         <>
           <Appbar.Content

@@ -2,10 +2,14 @@ import "react-native-gesture-handler";
 import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+
+// Components
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import GameNotes from "./components/GameNotes";
+
+// Contexts
 import { UserContext } from "./contexts/UserContext";
 import MenuContextProvider from "./contexts/MenuContext";
 
