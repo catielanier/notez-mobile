@@ -1,7 +1,12 @@
 import React, { useState, useContext } from "react";
 import { View } from "react-native";
 import { Title, TextInput, Button } from "react-native-paper";
+
+// Contexts
 import { LanguageContext } from "../contexts/LanguageContext";
+import { UserContext } from "../contexts/UserContext";
+
+// Locales
 import localeSelect from "../services/localeSelect";
 import {
   email as emailLocale,
@@ -11,6 +16,7 @@ import {
 
 export default function Login() {
   const { language } = useContext(LanguageContext);
+  const { doLogin } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -27,7 +33,16 @@ export default function Login() {
         onChangeText={(text) => setPassword(text)}
         secureTextEntry
       />
-      <Button mode="contained">{localeSelect(language, login)}</Button>
+      <Button
+        mode="contained"
+        uppercase
+        onPress={() => {
+          setEmail(email.toLowerCase);
+          doLogin(email, password);
+        }}
+      >
+        {localeSelect(language, login)}
+      </Button>
     </View>
   );
 }
