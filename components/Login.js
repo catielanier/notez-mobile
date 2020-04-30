@@ -16,7 +16,7 @@ import {
 
 export default function Login() {
   const { language } = useContext(LanguageContext);
-  const { doLogin } = useContext(UserContext);
+  const { doLogin, loading } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   return (
@@ -36,6 +36,7 @@ export default function Login() {
       <Button
         mode="contained"
         uppercase
+        loading={loading}
         onPress={() => {
           setEmail(email.toLowerCase);
           doLogin(email, password);

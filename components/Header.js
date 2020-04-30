@@ -30,7 +30,13 @@ function Header({ navigation }) {
               navigation.navigate("Login");
             }}
           />
-          <Appbar.Action icon="account-plus" color="#ffffff" />
+          <Appbar.Action
+            icon="account-plus"
+            color="#ffffff"
+            onPress={() => {
+              navigation.navigate("Signup");
+            }}
+          />
         </>
       )}
       {user && (

@@ -12,6 +12,7 @@ import GameNotes from "./components/GameNotes";
 // Contexts
 import { UserContext } from "./contexts/UserContext";
 import MenuContextProvider from "./contexts/MenuContext";
+import Signup from "./components/Signup";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +31,7 @@ export default function ComponentContainer() {
             <Stack.Screen name="Home" component={Home} />
           )}
           <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Signup" component={Signup} />
         </Stack.Navigator>
       </NavigationContainer>
     </MenuContextProvider>
