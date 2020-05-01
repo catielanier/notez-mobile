@@ -68,7 +68,7 @@ export default function Signup() {
   const [realName, setRealName] = useState("");
   const [country, setCountry] = useState("");
   const countryOptions = [];
-  let signupIndex = 0;
+  const [index, setIndex] = useState(0);
   countries.map((item) => {
     const value = {
       value: JSON.stringify(item.value),
@@ -84,7 +84,7 @@ export default function Signup() {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.inner}>
           <Title>{localeSelect(language, signup)}</Title>
-          {signupIndex === 0 && (
+          {index === 0 && (
             <>
               <TextInput
                 label={localeSelect(language, emailLocale)}
@@ -114,14 +114,14 @@ export default function Signup() {
                 uppercase
                 loading={loading}
                 onPress={() => {
-                  signupIndex += 1;
+                  setIndex(1);
                 }}
               >
                 Next
               </Button>
             </>
           )}
-          {signupIndex === 1 && (
+          {index === 1 && (
             <>
               <TextInput
                 label={localeSelect(language, usernameLocale)}
@@ -138,18 +138,27 @@ export default function Signup() {
                 mode="outlined"
               />
               <Button
+                uppercase
+                loading={loading}
+                onPress={() => {
+                  setIndex(0);
+                }}
+              >
+                Back
+              </Button>
+              <Button
                 mode="contained"
                 uppercase
                 loading={loading}
                 onPress={() => {
-                  signupIndex += 1;
+                  setIndex(2);
                 }}
               >
                 Next
               </Button>
             </>
           )}
-          {signupIndex === 2 && (
+          {index === 2 && (
             <>
               <SearchableDropdown
                 placeholder={localeSelect(language, countryLocale)}
@@ -166,6 +175,15 @@ export default function Signup() {
                 }}
                 textInputProps={{ textInputChange: (text) => alert(text) }}
               />
+              <Button
+                uppercase
+                loading={loading}
+                onPress={() => {
+                  setIndex(1);
+                }}
+              >
+                Back
+              </Button>
               <Button
                 mode="contained"
                 uppercase
