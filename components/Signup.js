@@ -68,6 +68,7 @@ export default function Signup() {
   const [realName, setRealName] = useState("");
   const [country, setCountry] = useState("");
   const countryOptions = [];
+  let signupIndex = 0;
   countries.map((item) => {
     const value = {
       value: JSON.stringify(item.value),
@@ -76,73 +77,110 @@ export default function Signup() {
     countryOptions.push(value);
   });
   return (
-    <View style={styles.inner}>
-      <ScrollView>
-        <Title>{localeSelect(language, signup)}</Title>
-        <TextInput
-          label={localeSelect(language, emailLocale)}
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          style={styles.textInput}
-          mode="outlined"
-        />
-        <TextInput
-          label={localeSelect(language, passwordLocale)}
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry
-          style={styles.textInput}
-          mode="outlined"
-        />
-        <TextInput
-          label={localeSelect(language, verifyPasswordLocale)}
-          value={verifyPassword}
-          onChangeText={(text) => setVerifyPassword(text)}
-          secureTextEntry
-          style={styles.textInput}
-          mode="outlined"
-        />
-        <TextInput
-          label={localeSelect(language, usernameLocale)}
-          value={username}
-          onChangeText={(text) => setUsername(text)}
-          style={styles.textInput}
-          mode="outlined"
-        />
-        <TextInput
-          label={localeSelect(language, realNameLocale)}
-          value={realName}
-          onChangeText={(text) => setRealName(text)}
-          style={styles.textInput}
-          mode="outlined"
-        />
-        <SearchableDropdown
-          placeholder={localeSelect(language, countryLocale)}
-          textInputStyle={styles.searchableDropdown}
-          itemStyle={{
-            paddingHorizontal: 12,
-            backgroundColor: "#fff",
-            paddingVertical: 12,
-          }}
-          itemsContainerStyle={{ maxHeight: 240 }}
-          items={countryOptions}
-          onItemSelect={(item) => {
-            console.log(item);
-          }}
-          textInputProps={{ textInputChange: (text) => alert(text) }}
-        />
-        <Button
-          mode="contained"
-          uppercase
-          loading={loading}
-          onPress={() => {
-            setEmail(email.toLowerCase);
-            doSignup(email, password);
-          }}
-        >
-          {localeSelect(language, signup)}
-        </Button>
-      </ScrollView>
-    </View>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.inner}>
+          <Title>{localeSelect(language, signup)}</Title>
+          {signupIndex === 0 && (
+            <>
+              <TextInput
+                label={localeSelect(language, emailLocale)}
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+                style={styles.textInput}
+                mode="outlined"
+              />
+              <TextInput
+                label={localeSelect(language, passwordLocale)}
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+                secureTextEntry
+                style={styles.textInput}
+                mode="outlined"
+              />
+              <TextInput
+                label={localeSelect(language, verifyPasswordLocale)}
+                value={verifyPassword}
+                onChangeText={(text) => setVerifyPassword(text)}
+                secureTextEntry
+                style={styles.textInput}
+                mode="outlined"
+              />
+              <Button
+                mode="contained"
+                uppercase
+                loading={loading}
+                onPress={() => {
+                  signupIndex += 1;
+                }}
+              >
+                Next
+              </Button>
+            </>
+          )}
+          {signupIndex === 1 && (
+            <>
+              <TextInput
+                label={localeSelect(language, usernameLocale)}
+                value={username}
+                onChangeText={(text) => setUsername(text)}
+                style={styles.textInput}
+                mode="outlined"
+              />
+              <TextInput
+                label={localeSelect(language, realNameLocale)}
+                value={realName}
+                onChangeText={(text) => setRealName(text)}
+                style={styles.textInput}
+                mode="outlined"
+              />
+              <Button
+                mode="contained"
+                uppercase
+                loading={loading}
+                onPress={() => {
+                  signupIndex += 1;
+                }}
+              >
+                Next
+              </Button>
+            </>
+          )}
+          {signupIndex === 2 && (
+            <>
+              <SearchableDropdown
+                placeholder={localeSelect(language, countryLocale)}
+                textInputStyle={styles.searchableDropdown}
+                itemStyle={{
+                  paddingHorizontal: 12,
+                  backgroundColor: "#fff",
+                  paddingVertical: 12,
+                }}
+                itemsContainerStyle={{ maxHeight: 240 }}
+                items={countryOptions}
+                onItemSelect={(item) => {
+                  console.log(item);
+                }}
+                textInputProps={{ textInputChange: (text) => alert(text) }}
+              />
+              <Button
+                mode="contained"
+                uppercase
+                loading={loading}
+                onPress={() => {
+                  setEmail(email.toLowerCase);
+                  doSignup(email, password);
+                }}
+              >
+                {localeSelect(language, signup)}
+              </Button>
+            </>
+          )}
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
