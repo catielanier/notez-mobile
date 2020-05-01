@@ -56,6 +56,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#aaa",
     paddingVertical: 30,
   },
+  buttons: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+  },
 });
 
 export default function Signup() {
@@ -109,16 +113,19 @@ export default function Signup() {
                 style={styles.textInput}
                 mode="outlined"
               />
-              <Button
-                mode="contained"
-                uppercase
-                loading={loading}
-                onPress={() => {
-                  setIndex(1);
-                }}
-              >
-                Next
-              </Button>
+              <View style={styles.buttons}>
+                <View></View>
+                <Button
+                  mode="contained"
+                  uppercase
+                  loading={loading}
+                  onPress={() => {
+                    setIndex(1);
+                  }}
+                >
+                  Next
+                </Button>
+              </View>
             </>
           )}
           {index === 1 && (
@@ -137,25 +144,27 @@ export default function Signup() {
                 style={styles.textInput}
                 mode="outlined"
               />
-              <Button
-                uppercase
-                loading={loading}
-                onPress={() => {
-                  setIndex(0);
-                }}
-              >
-                Back
-              </Button>
-              <Button
-                mode="contained"
-                uppercase
-                loading={loading}
-                onPress={() => {
-                  setIndex(2);
-                }}
-              >
-                Next
-              </Button>
+              <View style={styles.buttons}>
+                <Button
+                  uppercase
+                  loading={loading}
+                  onPress={() => {
+                    setIndex(0);
+                  }}
+                >
+                  Back
+                </Button>
+                <Button
+                  mode="contained"
+                  uppercase
+                  loading={loading}
+                  onPress={() => {
+                    setIndex(2);
+                  }}
+                >
+                  Next
+                </Button>
+              </View>
             </>
           )}
           {index === 2 && (
@@ -175,26 +184,28 @@ export default function Signup() {
                 }}
                 textInputProps={{ textInputChange: (text) => alert(text) }}
               />
-              <Button
-                uppercase
-                loading={loading}
-                onPress={() => {
-                  setIndex(1);
-                }}
-              >
-                Back
-              </Button>
-              <Button
-                mode="contained"
-                uppercase
-                loading={loading}
-                onPress={() => {
-                  setEmail(email.toLowerCase);
-                  doSignup(email, password);
-                }}
-              >
-                {localeSelect(language, signup)}
-              </Button>
+              <View style={styles.buttons}>
+                <Button
+                  uppercase
+                  loading={loading}
+                  onPress={() => {
+                    setIndex(1);
+                  }}
+                >
+                  Back
+                </Button>
+                <Button
+                  mode="contained"
+                  uppercase
+                  loading={loading}
+                  onPress={() => {
+                    setEmail(email.toLowerCase);
+                    doSignup(email, password);
+                  }}
+                >
+                  {localeSelect(language, signup)}
+                </Button>
+              </View>
             </>
           )}
         </View>
