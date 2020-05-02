@@ -24,6 +24,8 @@ import {
   username as usernameLocale,
   realName as realNameLocale,
   country as countryLocale,
+  next,
+  goBack,
 } from "../data/locales";
 import countries from "../data/countries";
 
@@ -118,12 +120,11 @@ export default function Signup() {
                 <Button
                   mode="contained"
                   uppercase
-                  loading={loading}
                   onPress={() => {
                     setIndex(1);
                   }}
                 >
-                  Next
+                  {localeSelect(language, next)}
                 </Button>
               </View>
             </>
@@ -147,22 +148,20 @@ export default function Signup() {
               <View style={styles.buttons}>
                 <Button
                   uppercase
-                  loading={loading}
                   onPress={() => {
                     setIndex(0);
                   }}
                 >
-                  Back
+                  {localeSelect(language, goBack)}
                 </Button>
                 <Button
                   mode="contained"
                   uppercase
-                  loading={loading}
                   onPress={() => {
                     setIndex(2);
                   }}
                 >
-                  Next
+                  {localeSelect(language, next)}
                 </Button>
               </View>
             </>
@@ -187,12 +186,11 @@ export default function Signup() {
               <View style={styles.buttons}>
                 <Button
                   uppercase
-                  loading={loading}
                   onPress={() => {
                     setIndex(1);
                   }}
                 >
-                  Back
+                  {localeSelect(language, goBack)}
                 </Button>
                 <Button
                   mode="contained"

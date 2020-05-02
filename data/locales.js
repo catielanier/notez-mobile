@@ -1000,3 +1000,13 @@ export const inviteSent = {
   sg: "邀請已發送",
   hk: "邀請已發送",
 };
+
+export const next = {
+  en: "Next",
+  ja: "次いで",
+  ko: "다음",
+  cn: "下一个",
+  tw: "下一個",
+  sg: "下一個",
+  hk: "下一個",
+};
