@@ -58,7 +58,7 @@ export default function Login() {
           uppercase
           loading={loading}
           onPress={() => {
-            setEmail(email.toLowerCase);
+            setEmail(email.toLowerCase());
             doLogin(email, password);
           }}
         >

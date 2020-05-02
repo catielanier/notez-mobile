@@ -77,7 +77,7 @@ export default function Signup() {
   const [index, setIndex] = useState(0);
   countries.map((item) => {
     const value = {
-      value: JSON.stringify(item.value),
+      value: item.value,
       name: dbLocale(language, item),
     };
     countryOptions.push(value);
@@ -179,7 +179,7 @@ export default function Signup() {
                 itemsContainerStyle={{ maxHeight: 240 }}
                 items={countryOptions}
                 onItemSelect={(item) => {
-                  console.log(item);
+                  setCountry(item.value);
                 }}
                 textInputProps={{ textInputChange: (text) => alert(text) }}
               />
@@ -197,8 +197,16 @@ export default function Signup() {
                   uppercase
                   loading={loading}
                   onPress={() => {
-                    setEmail(email.toLowerCase);
-                    doSignup(email, password);
+                    setEmail(email.toLowerCase());
+                    console.log(
+                      email,
+                      password,
+                      verifyPassword,
+                      username,
+                      realName,
+                      country
+                    );
+                    // doSignup(email, password);
                   }}
                 >
                   {localeSelect(language, signup)}
