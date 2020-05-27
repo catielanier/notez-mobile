@@ -16,7 +16,9 @@ const CharacterContextProvider = (props) => {
   const { user } = useContext(UserContext);
   useEffect(() => {
     async function fetchData() {
-      const result = await axios.get("/api/characters");
+      const result = await axios.get(
+        "https://checkthenotez.com/api/characters"
+      );
       sort(result.data.data, language);
       setCharacters(result.data.data);
     }
@@ -35,11 +37,14 @@ const CharacterContextProvider = (props) => {
       "name_zh-hk": hk,
     };
     try {
-      const res = await axios.post("/api/characters/new", {
-        user,
-        token,
-        character,
-      });
+      const res = await axios.post(
+        "https://checkthenotez.com/api/characters/new",
+        {
+          user,
+          token,
+          character,
+        }
+      );
       characters.push(res.data.data);
       sort(characters, language);
       setLoading(false);
@@ -62,7 +67,7 @@ const CharacterContextProvider = (props) => {
     setError(null);
     const token = getToken();
     try {
-      const res = await axios.put(`/api/characters/`, {
+      const res = await axios.put(`https://checkthenotez.com/api/characters/`, {
         data: {
           token,
           user,

@@ -23,7 +23,7 @@ const GameContextProvider = (props) => {
   const { language } = useContext(LanguageContext);
   const { user } = useContext(UserContext);
   const fetchData = useCallback(async () => {
-    await axios.get("/api/games").then((res) => {
+    await axios.get("https://checkthenotez.com/api/games").then((res) => {
       sort(res.data.data, language);
       setGames(res.data.data);
     });
@@ -54,7 +54,7 @@ const GameContextProvider = (props) => {
       "name_zh-hk": hk,
     };
     try {
-      const res = await axios.post("/api/games/new", {
+      const res = await axios.post("https://checkthenotez.com/api/games/new", {
         user,
         token,
         game,
@@ -81,7 +81,7 @@ const GameContextProvider = (props) => {
     setError(null);
     const token = getToken();
     try {
-      const res = await axios.put(`/api/games/`, {
+      const res = await axios.put(`https://checkthenotez.com/api/games/`, {
         data: {
           token,
           user,
@@ -108,12 +108,15 @@ const GameContextProvider = (props) => {
     setError(null);
     const token = getToken();
     try {
-      const res = await axios.put(`/api/games/${game}/character`, {
-        user,
-        token,
-        characters,
-        game,
-      });
+      const res = await axios.put(
+        `https://checkthenotez.com/api/games/${game}/character`,
+        {
+          user,
+          token,
+          characters,
+          game,
+        }
+      );
       await fetchData();
       setLoading(false);
       setSuccess(true);
@@ -127,12 +130,15 @@ const GameContextProvider = (props) => {
     setError(null);
     const token = getToken();
     try {
-      const res = await axios.put(`/api/games/${game}/filter`, {
-        user,
-        token,
-        filters,
-        game,
-      });
+      const res = await axios.put(
+        `https://checkthenotez.com/api/games/${game}/filter`,
+        {
+          user,
+          token,
+          filters,
+          game,
+        }
+      );
       await fetchData();
       setLoading(false);
       setSuccess(true);

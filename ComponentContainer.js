@@ -33,7 +33,6 @@ export default function ComponentContainer() {
             ) : (
               <Stack.Screen name="Home" component={Home} />
             )}
-
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Signup" component={Signup} />
             <CharacterContextProvider></CharacterContextProvider>
