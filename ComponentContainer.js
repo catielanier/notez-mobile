@@ -16,6 +16,7 @@ import MenuContextProvider from "./contexts/MenuContext";
 import GameContextProvider from "./contexts/GameContext";
 import CharacterContextProvider from "./contexts/CharacterContext";
 import FilterContextProvider from "./contexts/FilterContext";
+import NoteContextProvider from "./contexts/NoteContext";
 
 const Stack = createStackNavigator();
 
@@ -29,11 +30,13 @@ export default function ComponentContainer() {
             initialRouteName="Home"
             screenOptions={{ header: Header }}
           >
-            {user ? (
-              <Stack.Screen name="Home" component={GameNotes} />
-            ) : (
-              <Stack.Screen name="Home" component={Home} />
-            )}
+            <NoteContextProvider>
+              {user ? (
+                <Stack.Screen name="Home" component={GameNotes} />
+              ) : (
+                <Stack.Screen name="Home" component={Home} />
+              )}
+            </NoteContextProvider>
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Signup" component={Signup} />
             <CharacterContextProvider></CharacterContextProvider>
