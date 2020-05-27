@@ -15,6 +15,7 @@ import { UserContext } from "./contexts/UserContext";
 import MenuContextProvider from "./contexts/MenuContext";
 import GameContextProvider from "./contexts/GameContext";
 import CharacterContextProvider from "./contexts/CharacterContext";
+import FilterContextProvider from "./contexts/FilterContext";
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,7 @@ export default function ComponentContainer() {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Signup" component={Signup} />
             <CharacterContextProvider></CharacterContextProvider>
+            <FilterContextProvider></FilterContextProvider>
           </Stack.Navigator>
         </NavigationContainer>
       </GameContextProvider>
