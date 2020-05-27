@@ -8,12 +8,13 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import GameNotes from "./components/GameNotes";
+import Signup from "./components/Signup";
 
 // Contexts
 import { UserContext } from "./contexts/UserContext";
 import MenuContextProvider from "./contexts/MenuContext";
-import Signup from "./components/Signup";
 import GameContextProvider from "./contexts/GameContext";
+import CharacterContextProvider from "./contexts/CharacterContext";
 
 const Stack = createStackNavigator();
 
@@ -32,8 +33,10 @@ export default function ComponentContainer() {
             ) : (
               <Stack.Screen name="Home" component={Home} />
             )}
+
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Signup" component={Signup} />
+            <CharacterContextProvider></CharacterContextProvider>
           </Stack.Navigator>
         </NavigationContainer>
       </GameContextProvider>
