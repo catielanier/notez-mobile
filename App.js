@@ -1,21 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StatusBar } from "react-native";
+import Container from "./Container";
+import UserContextProvider from "./contexts/UserContext";
+import LanguageContextProvider from "./contexts/LanguageContext";
+import ThemeContextProvider from "./contexts/ThemeContext";
+import GameContextProvider from "./contexts/GameContext";
+import { getColor } from "./lib/tailwind";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+	return (
+		<LanguageContextProvider>
+			<UserContextProvider>
+				<ThemeContextProvider>
+					<GameContextProvider>
+						<StatusBar
+							backgroundColor={getColor("blue-500")}
+							barStyle="light-content"
+						/>
+						<Container />
+					</GameContextProvider>
+				</ThemeContextProvider>
+			</UserContextProvider>
+		</LanguageContextProvider>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
