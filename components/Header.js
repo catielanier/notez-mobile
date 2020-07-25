@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { View, Text, Button } from "react-native";
+import ButtonContainer from "../elements/ButtonContainer";
 import PrimaryButton from "../elements/PrimaryButton";
 import { tailwind } from "../lib/tailwind";
 import localeSelect from "../services/localeSelect";
@@ -7,7 +8,6 @@ import { LanguageContext } from "../contexts/LanguageContext";
 import { UserContext } from "../contexts/UserContext";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { title, login, signup, logout } from "../data/locales";
-import { getColor } from "../lib/tailwind";
 
 export default function Header({ navigation }) {
 	const { language } = useContext(LanguageContext);
@@ -22,7 +22,7 @@ export default function Header({ navigation }) {
 			<Text style={tailwind("text-left text-white text-2xl pt-1")}>
 				{localeSelect(language, title)}
 			</Text>
-			<View style={tailwind("flex flex-row justify-end")}>
+			<ButtonContainer style={tailwind("flex flex-row justify-end")}>
 				{!user && (
 					<>
 						<View style={tailwind("mr-2")}>
@@ -51,7 +51,7 @@ export default function Header({ navigation }) {
 						/>
 					</View>
 				)}
-			</View>
+			</ButtonContainer>
 		</View>
 	);
 }
