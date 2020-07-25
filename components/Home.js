@@ -1,10 +1,18 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Text } from "react-native";
+import PaddedView from "../elements/PaddedView";
+import SecondaryButton from "../elements/SecondaryButton";
 import { tailwind } from "../lib/tailwind";
-export default function Home() {
+export default function Home({ navigation }) {
 	return (
-		<View style={tailwind("flex items-center justify-center")}>
+		<PaddedView style={tailwind("flex items-center justify-center")}>
 			<Text>Home</Text>
-		</View>
+			<SecondaryButton
+				text="Login"
+				onPress={() => {
+					navigation.navigate("Login");
+				}}
+			/>
+		</PaddedView>
 	);
 }

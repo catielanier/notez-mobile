@@ -6,9 +6,9 @@ export default function PrimaryButton({ text, onPress }) {
 	return (
 		<TouchableOpacity
 			onPress={onPress}
-			style={tailwind("px-1 py-2 bg-blue-500 rounded mr-1")}
+			style={tailwind("px-1 py-2 border border-orange-400 rounded")}
 		>
-			<Text style={tailwind("text-white font-semibold uppercase text-base")}>
+			<Text style={tailwind("text-orange-400 font-semibold uppercase text-lg")}>
 				{text}
 			</Text>
 		</TouchableOpacity>
