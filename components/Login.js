@@ -14,9 +14,7 @@ export default function Login({ navigation }) {
 	const [password, setPassword] = useState("");
 	const { doLogin, loading, success, error } = useContext(UserContext);
 	const { language } = useContext(LanguageContext);
-	if (success) {
-		return navigation.navigate("Home");
-	}
+
 	return (
 		<PaddedView>
 			<Text style={tailwind("text-lg text-center")}>
@@ -49,8 +47,8 @@ export default function Login({ navigation }) {
 			<View style={tailwind("flex flex-row justify-start")}>
 				<View style={tailwind("mr-2")}>
 					<PrimaryButton
-						onPress={() => {
-							doLogin(email, password);
+						onPress={async () => {
+							await doLogin(email, password, navigation);
 						}}
 						text={localeSelect(language, login)}
 					/>
