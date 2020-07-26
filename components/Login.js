@@ -24,6 +24,9 @@ export default function Login({ navigation }) {
 					setEmail(text);
 				}}
 				placeholder="Email Address"
+				style={tailwind(
+					"py-2 px-3 mx-3 my-4 border border-l-0 border-r-0 border-t-0 border-b-1 border-black"
+				)}
 			/>
 			<TextInput
 				value={password}
@@ -32,6 +35,9 @@ export default function Login({ navigation }) {
 				}}
 				secureTextEntry
 				placeholder="Password"
+				style={tailwind(
+					"py-2 px-3 mx-3 my-4 mb-8 border border-l-0 border-r-0 border-t-0 border-b-1 border-black"
+				)}
 			/>
 			<PrimaryButton
 				onPress={() => {
