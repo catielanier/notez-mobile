@@ -2,10 +2,12 @@ import React, { useState, useContext } from "react";
 import { View, Text, TextInput } from "react-native";
 import { UserContext } from "../contexts/UserContext";
 import PrimaryButton from "../elements/PrimaryButton";
+import TextOnlyButton from "../elements/TextOnlyButton";
+import PaddedView from "../elements/PaddedView";
 import { tailwind } from "../lib/tailwind";
 import localeSelect from "../services/localeSelect";
 import { LanguageContext } from "../contexts/LanguageContext";
-import { login } from "../data/locales";
+import { login, goBack } from "../data/locales";
 
 export default function Login({ navigation }) {
 	const [email, setEmail] = useState("");
@@ -16,14 +18,15 @@ export default function Login({ navigation }) {
 		return navigation.navigate("Home");
 	}
 	return (
-		<View>
-			<Text>Login</Text>
+		<PaddedView>
+			<Text style={tailwind("text-lg text-center")}>Login</Text>
 			<TextInput
 				value={email}
 				onChangeText={(text) => {
 					setEmail(text);
 				}}
 				placeholder="Email Address"
+				autoCapitalize="none"
 				style={tailwind(
 					"py-2 px-3 mx-3 my-4 border border-l-0 border-r-0 border-t-0 border-b border-black"
 				)}
@@ -35,16 +38,29 @@ export default function Login({ navigation }) {
 				}}
 				secureTextEntry
 				placeholder="Password"
+				autoCapitalize="none"
 				style={tailwind(
 					"py-2 px-3 mx-3 my-4 mb-8 border border-l-0 border-r-0 border-t-0 border-b border-black"
 				)}
 			/>
-			<PrimaryButton
-				onPress={() => {
-					doLogin(email, password);
-				}}
-				text={localeSelect(language, login)}
-			/>
-		</View>
+			<View style={tailwind("flex flex-row justify-start")}>
+				<View style={tailwind("mr-2")}>
+					<PrimaryButton
+						onPress={() => {
+							doLogin(email, password);
+						}}
+						text={localeSelect(language, login)}
+					/>
+				</View>
+				<View>
+					<TextOnlyButton
+						onPress={() => {
+							navigation.navigate("Home");
+						}}
+						text={localeSelect(language, goBack)}
+					/>
+				</View>
+			</View>
+		</PaddedView>
 	);
 }
