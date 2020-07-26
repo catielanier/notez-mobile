@@ -20,23 +20,23 @@ export default function Login({ navigation }) {
 			<Text>Login</Text>
 			<TextInput
 				value={email}
-				onChange={(text) => {
+				onChangeText={(text) => {
 					setEmail(text);
 				}}
 				placeholder="Email Address"
 				style={tailwind(
-					"py-2 px-3 mx-3 my-4 border border-l-0 border-r-0 border-t-0 border-b-1 border-black"
+					"py-2 px-3 mx-3 my-4 border border-l-0 border-r-0 border-t-0 border-b border-black"
 				)}
 			/>
 			<TextInput
 				value={password}
-				onChange={(text) => {
+				onChangeText={(text) => {
 					setPassword(text);
 				}}
 				secureTextEntry
 				placeholder="Password"
 				style={tailwind(
-					"py-2 px-3 mx-3 my-4 mb-8 border border-l-0 border-r-0 border-t-0 border-b-1 border-black"
+					"py-2 px-3 mx-3 my-4 mb-8 border border-l-0 border-r-0 border-t-0 border-b border-black"
 				)}
 			/>
 			<PrimaryButton
