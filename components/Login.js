@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
-import { View, Text, TextInput } from "react-native";
+import { View, Text, TextInput, ActivityIndicator } from "react-native";
 import { UserContext } from "../contexts/UserContext";
 import PrimaryButton from "../elements/PrimaryButton";
 import TextOnlyButton from "../elements/TextOnlyButton";
 import PaddedView from "../elements/PaddedView";
-import { tailwind } from "../lib/tailwind";
+import { tailwind, getColor } from "../lib/tailwind";
 import localeSelect from "../services/localeSelect";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { login, goBack } from "../data/locales";
@@ -12,14 +12,21 @@ import { login, goBack } from "../data/locales";
 export default function Login({ navigation }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { doLogin, success, error } = useContext(UserContext);
+	const { doLogin, loading, success, error } = useContext(UserContext);
 	const { language } = useContext(LanguageContext);
 	if (success) {
 		return navigation.navigate("Home");
 	}
 	return (
 		<PaddedView>
-			<Text style={tailwind("text-lg text-center")}>Login</Text>
+			<Text style={tailwind("text-lg text-center")}>
+				Login
+				<ActivityIndicator
+					animating={loading}
+					size="small"
+					color={getColor("orange-500")}
+				/>
+			</Text>
 			<TextInput
 				value={email}
 				onChangeText={(text) => {
@@ -27,9 +34,7 @@ export default function Login({ navigation }) {
 				}}
 				placeholder="Email Address"
 				autoCapitalize="none"
-				style={tailwind(
-					"py-2 px-3 mx-3 my-4 border border-l-0 border-r-0 border-t-0 border-b border-black"
-				)}
+				style={tailwind("py-2 px-3 mx-3 my-4 border-b border-black")}
 			/>
 			<TextInput
 				value={password}
@@ -39,9 +44,7 @@ export default function Login({ navigation }) {
 				secureTextEntry
 				placeholder="Password"
 				autoCapitalize="none"
-				style={tailwind(
-					"py-2 px-3 mx-3 my-4 mb-8 border border-l-0 border-r-0 border-t-0 border-b border-black"
-				)}
+				style={tailwind("py-2 px-3 mx-3 my-4 mb-8 border-b border-black")}
 			/>
 			<View style={tailwind("flex flex-row justify-start")}>
 				<View style={tailwind("mr-2")}>
