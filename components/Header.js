@@ -16,7 +16,7 @@ export default function Header({ navigation }) {
 	return (
 		<View
 			style={tailwind(
-				"bg-blue-500 px-3 pt-6 pb-3 flex flex-row justify-between"
+				"bg-blue-500 px-3 pt-8 pb-3 flex flex-row justify-between"
 			)}
 		>
 			<Text style={tailwind("text-left text-white text-2xl pt-1")}>

@@ -9,20 +9,6 @@ export default function Home({ navigation }) {
 	return (
 		<PaddedView style={tailwind("flex items-center justify-center")}>
 			<Text>Home</Text>
-			<ButtonContainer>
-				<SecondaryButton
-					text="Login"
-					onPress={() => {
-						navigation.navigate("Login");
-					}}
-				/>
-				<TextOnlyButton
-					text="Signup"
-					onPress={() => {
-						navigation.navigate("Signup");
-					}}
-				/>
-			</ButtonContainer>
 		</PaddedView>
 	);
 }

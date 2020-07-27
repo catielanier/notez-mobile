@@ -18,16 +18,19 @@ const UserContextProvider = (props) => {
 	const { language } = useContext(LanguageContext);
 
 	useEffect(() => {
-		const newUser = AsyncStorage.getItem("notezId");
-		if (typeof newUser == "string") {
-			axios.get(`https://checkthenotez.com/api/users/${user}`).then((res) => {
-				const { role: userRole } = res.data.data;
-				setRole(userRole);
-				setUser(newUser);
-			});
-		} else {
-			setRole(null);
-		}
+		AsyncStorage.getItem("notezId").then((value) => {
+			if (typeof value == "string") {
+				axios
+					.get(`https://checkthenotez.com/api/users/${value}`)
+					.then((res) => {
+						const { role: userRole } = res.data.data;
+						setRole(userRole);
+						setUser(value);
+					});
+			} else {
+				setRole(null);
+			}
+		});
 	}, [user]);
 
 	const logout = () => {
