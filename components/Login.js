@@ -17,7 +17,7 @@ import {
 export default function Login({ navigation }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const { doLogin, loading, success, error } = useContext(UserContext);
+	const { doLogin, loading, error } = useContext(UserContext);
 	const { language } = useContext(LanguageContext);
 
 	return (
