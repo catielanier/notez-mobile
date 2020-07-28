@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { View, Text } from "react-native";
+import { KeyboardAvoidingView, Text } from "react-native";
 import PaddedView from "../elements/PaddedView";
 import { tailwind, getColor } from "../lib/tailwind";
 import countries from "../data/countries";
@@ -13,9 +13,11 @@ export default function Signup() {
 	const { language } = useContext(LanguageContext);
 	return (
 		<PaddedView>
-			<Text style={tailwind("text-lg text-center")}>
-				{localeSelect(language, signup)}
-			</Text>
+			<KeyboardAvoidingView>
+				<Text style={tailwind("text-lg text-center")}>
+					{localeSelect(language, signup)}
+				</Text>
+			</KeyboardAvoidingView>
 		</PaddedView>
 	);
 }
