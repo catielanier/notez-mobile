@@ -11,7 +11,7 @@ import { title, login, signup, logout } from "../data/locales";
 
 export default function Header({ navigation }) {
 	const { language } = useContext(LanguageContext);
-	const { user, role } = useContext(UserContext);
+	const { user, role, logout: doLogout } = useContext(UserContext);
 	const { platform } = useContext(ThemeContext);
 	return (
 		<View
@@ -45,9 +45,11 @@ export default function Header({ navigation }) {
 				)}
 				{user && (
 					<View>
-						<Button
-							title={localeSelect(language, logout)}
-							color={platform === "ios" ? "white" : getcolor("blue-500")}
+						<PrimaryButton
+							text={localeSelect(language, logout)}
+							onPress={() => {
+								doLogout();
+							}}
 						/>
 					</View>
 				)}
