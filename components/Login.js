@@ -7,7 +7,12 @@ import PaddedView from "../elements/PaddedView";
 import { tailwind, getColor } from "../lib/tailwind";
 import localeSelect from "../services/localeSelect";
 import { LanguageContext } from "../contexts/LanguageContext";
-import { login, goBack } from "../data/locales";
+import {
+	login,
+	goBack,
+	email as emailLocale,
+	password as passwordLocale,
+} from "../data/locales";
 
 export default function Login({ navigation }) {
 	const [email, setEmail] = useState("");
@@ -18,7 +23,7 @@ export default function Login({ navigation }) {
 	return (
 		<PaddedView>
 			<Text style={tailwind("text-lg text-center")}>
-				Login
+				{localeSelect(language, login)}
 				<ActivityIndicator
 					animating={loading}
 					size="small"
@@ -30,7 +35,7 @@ export default function Login({ navigation }) {
 				onChangeText={(text) => {
 					setEmail(text);
 				}}
-				placeholder="Email Address"
+				placeholder={localeSelect(language, emailLocale)}
 				autoCapitalize="none"
 				style={tailwind("py-2 px-3 mx-3 my-4 border-b border-black")}
 			/>
@@ -40,7 +45,7 @@ export default function Login({ navigation }) {
 					setPassword(text);
 				}}
 				secureTextEntry
-				placeholder="Password"
+				placeholder={localeSelect(language, passwordLocale)}
 				autoCapitalize="none"
 				style={tailwind("py-2 px-3 mx-3 my-4 mb-8 border-b border-black")}
 			/>
