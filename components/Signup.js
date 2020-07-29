@@ -107,6 +107,7 @@ export default function Signup() {
 					onChangeItem={(item) => setCountry(item.value)}
 					itemStyle={{ justifyContent: "flex-start" }}
 					searchable={true}
+					placeholder={localeSelect(language, countryLocale)}
 					searchablePlaceholder="Search"
 				/>
 			)}
