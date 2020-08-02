@@ -4,6 +4,7 @@ import Container from "./Container";
 import UserContextProvider from "./contexts/UserContext";
 import LanguageContextProvider from "./contexts/LanguageContext";
 import ThemeContextProvider from "./contexts/ThemeContext";
+import MenuContextProvider from "./contexts/MenuContext";
 import GameContextProvider from "./contexts/GameContext";
 import { getColor } from "./lib/tailwind";
 
@@ -11,15 +12,17 @@ export default function App() {
 	return (
 		<LanguageContextProvider>
 			<UserContextProvider>
-				<ThemeContextProvider>
-					<GameContextProvider>
-						<StatusBar
-							backgroundColor={getColor("blue-500")}
-							barStyle="light-content"
-						/>
-						<Container />
-					</GameContextProvider>
-				</ThemeContextProvider>
+				<MenuContextProvider>
+					<ThemeContextProvider>
+						<GameContextProvider>
+							<StatusBar
+								backgroundColor={getColor("blue-500")}
+								barStyle="light-content"
+							/>
+							<Container />
+						</GameContextProvider>
+					</ThemeContextProvider>
+				</MenuContextProvider>
 			</UserContextProvider>
 		</LanguageContextProvider>
 	);
