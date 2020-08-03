@@ -3,7 +3,7 @@ import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { UserContext } from "../contexts/UserContext";
 import { LanguageContext } from "../contexts/LanguageContext";
 import localeSelect from "../services/localeSelect";
-import { login, signup, logout, gameNotes } from "../data/locales";
+import { login, signup, logout, gameNotes, playerNotes } from "../data/locales";
 
 export default function NavigationDrawer({ navigation }) {
 	const { user, logout: doLogout } = useContext(UserContext);
@@ -32,6 +32,12 @@ export default function NavigationDrawer({ navigation }) {
 						label={localeSelect(language, gameNotes)}
 						onPress={() => {
 							navigation.navigate("Stack", { screen: "GameNotes" });
+						}}
+					/>
+					<DrawerItem
+						label={localeSelect(language, playerNotes)}
+						onPress={() => {
+							navigation.navigate("Stack", { screen: "PlayerNotes" });
 						}}
 					/>
 					<DrawerItem

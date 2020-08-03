@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import GameNotes from "./components/GameNotes";
+import PlayerNotes from "./components/PlayerNotes";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -20,6 +21,7 @@ function StackNavigator() {
 			<Stack.Screen name="Login" component={Login} />
 			<Stack.Screen name="Signup" component={Signup} />
 			<Stack.Screen name="GameNotes" component={GameNotes} />
+			<Stack.Screen name="PlayerNotes" component={PlayerNotes} />
 		</Stack.Navigator>
 	);
 }
