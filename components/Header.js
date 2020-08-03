@@ -19,16 +19,14 @@ export default function Header({ navigation }) {
 			)}
 		>
 			<View style={tailwind("flex flex-row justify-start")}>
-				{user && (
-					<View style={tailwind("mr-2")}>
-						<HeaderButton
-							name="menu"
-							onPress={() => {
-								navigation.openDrawer();
-							}}
-						/>
-					</View>
-				)}
+				<View style={tailwind("mr-2")}>
+					<HeaderButton
+						name="menu"
+						onPress={() => {
+							navigation.openDrawer();
+						}}
+					/>
+				</View>
 				<View>
 					<Text style={tailwind("text-left text-white text-2xl pt-1")}>
 						{localeSelect(language, title)}
@@ -36,34 +34,9 @@ export default function Header({ navigation }) {
 				</View>
 			</View>
 			<ButtonContainer style={tailwind("flex flex-row justify-end")}>
-				{!user && (
-					<>
-						<View style={tailwind("mr-2")}>
-							<PrimaryButton
-								text={localeSelect(language, login)}
-								onPress={() => {
-									navigation.navigate("Login");
-								}}
-							/>
-						</View>
-						<View>
-							<PrimaryButton
-								text={localeSelect(language, signup)}
-								onPress={() => {
-									navigation.navigate("Signup");
-								}}
-							/>
-						</View>
-					</>
-				)}
 				{user && (
 					<View>
-						<PrimaryButton
-							text={localeSelect(language, logout)}
-							onPress={() => {
-								doLogout();
-							}}
-						/>
+						<HeaderButton name="search" />
 					</View>
 				)}
 			</ButtonContainer>
