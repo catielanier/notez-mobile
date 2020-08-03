@@ -6,7 +6,7 @@ import localeSelect from "../services/localeSelect";
 import { login, signup, logout, gameNotes, playerNotes } from "../data/locales";
 
 export default function NavigationDrawer({ navigation }) {
-	const { user, logout: doLogout } = useContext(UserContext);
+	const { user, changeScreen, logout: doLogout } = useContext(UserContext);
 	const { language } = useContext(LanguageContext);
 	return (
 		<DrawerContentScrollView>
@@ -32,12 +32,14 @@ export default function NavigationDrawer({ navigation }) {
 						label={localeSelect(language, gameNotes)}
 						onPress={() => {
 							navigation.navigate("Stack", { screen: "GameNotes" });
+							changeScreen("GameNotes");
 						}}
 					/>
 					<DrawerItem
 						label={localeSelect(language, playerNotes)}
 						onPress={() => {
 							navigation.navigate("Stack", { screen: "PlayerNotes" });
+							changeScreen("PlayerNotes");
 						}}
 					/>
 					<DrawerItem

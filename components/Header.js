@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { View, Text } from "react-native";
 import ButtonContainer from "../elements/ButtonContainer";
-import PrimaryButton from "../elements/PrimaryButton";
 import HeaderButton from "../elements/HeaderButton";
 import { tailwind } from "../lib/tailwind";
 import localeSelect from "../services/localeSelect";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { UserContext } from "../contexts/UserContext";
-import { title, login, signup, logout } from "../data/locales";
+import { title } from "../data/locales";
+import { useNavigationState } from "@react-navigation/native";
 
-export default function Header({ navigation }) {
+export default function Header({ route, navigation }) {
 	const { language } = useContext(LanguageContext);
-	const { user } = useContext(UserContext);
+	const { user, currentScreen } = useContext(UserContext);
+	console.log(currentScreen);
 	return (
 		<View
 			style={tailwind(
@@ -34,11 +35,13 @@ export default function Header({ navigation }) {
 				</View>
 			</View>
 			<ButtonContainer style={tailwind("flex flex-row justify-end")}>
-				{user && (
-					<View>
-						<HeaderButton name="search" />
-					</View>
-				)}
+				{user &&
+					(currentScreen === "GameNotes" ||
+						currentScreen === "PlayerNotes") && (
+						<View>
+							<HeaderButton name="search" />
+						</View>
+					)}
 			</ButtonContainer>
 		</View>
 	);

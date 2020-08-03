@@ -16,6 +16,7 @@ const UserContextProvider = (props) => {
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(false);
 	const { language } = useContext(LanguageContext);
+	const [currentScreen, setCurrentScreen] = useState("Main");
 
 	useEffect(() => {
 		AsyncStorage.getItem("notezId").then((value) => {
@@ -193,6 +194,11 @@ const UserContextProvider = (props) => {
 		}
 	};
 
+	const changeScreen = (screen) => {
+		setCurrentScreen(screen);
+		AsyncStorage.setItem("notezCurrentScreen", screen);
+	};
+
 	const requestReset = async (email) => {
 		this.loading(false);
 		this.error(null);
@@ -243,6 +249,8 @@ const UserContextProvider = (props) => {
 				updateProfile,
 				requestReset,
 				resetPassword,
+				currentScreen,
+				changeScreen,
 			}}
 		>
 			{props.children}
