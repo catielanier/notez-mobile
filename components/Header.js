@@ -21,7 +21,12 @@ export default function Header({ navigation }) {
 			<View style={tailwind("flex flex-row justify-start")}>
 				{user && (
 					<View style={tailwind("mr-2")}>
-						<HeaderButton name="menu" />
+						<HeaderButton
+							name="menu"
+							onPress={() => {
+								navigation.openDrawer();
+							}}
+						/>
 					</View>
 				)}
 				<View>
