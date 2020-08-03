@@ -11,7 +11,7 @@ import { title, login, signup, logout } from "../data/locales";
 
 export default function Header({ navigation }) {
 	const { language } = useContext(LanguageContext);
-	const { user, role, logout: doLogout } = useContext(UserContext);
+	const { user } = useContext(UserContext);
 	return (
 		<View
 			style={tailwind(

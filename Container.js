@@ -19,6 +19,7 @@ function StackNavigator() {
 			<Stack.Screen name="Main" component={Home} />
 			<Stack.Screen name="Login" component={Login} />
 			<Stack.Screen name="Signup" component={Signup} />
+			<Stack.Screen name="GameNotes" component={GameNotes} />
 		</Stack.Navigator>
 	);
 }
@@ -31,7 +32,6 @@ export default function ComponentContainer() {
 				drawerContent={(props) => <NavigationDrawer {...props} />}
 			>
 				<Drawer.Screen name="Stack" component={StackNavigator} />
-				<Drawer.Screen name="GameNotes" component={GameNotes} />
 			</Drawer.Navigator>
 		</NavigationContainer>
 	);
