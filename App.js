@@ -6,6 +6,7 @@ import LanguageContextProvider from "./contexts/LanguageContext";
 import ThemeContextProvider from "./contexts/ThemeContext";
 import MenuContextProvider from "./contexts/MenuContext";
 import GameContextProvider from "./contexts/GameContext";
+import NoteContextProvider from "./contexts/NoteContext";
 import { getColor } from "./lib/tailwind";
 
 export default function App() {
@@ -19,7 +20,9 @@ export default function App() {
 								backgroundColor={getColor("blue-500")}
 								barStyle="light-content"
 							/>
-							<Container />
+							<NoteContextProvider>
+								<Container />
+							</NoteContextProvider>
 						</GameContextProvider>
 					</ThemeContextProvider>
 				</MenuContextProvider>
