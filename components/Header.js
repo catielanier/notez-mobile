@@ -6,11 +6,13 @@ import { tailwind } from "../lib/tailwind";
 import localeSelect from "../services/localeSelect";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { UserContext } from "../contexts/UserContext";
+import { MenuContext } from "../contexts/MenuContext";
 import { title } from "../data/locales";
 
 export default function Header({ navigation }) {
 	const { language } = useContext(LanguageContext);
 	const { user, currentScreen } = useContext(UserContext);
+	const { showSearchBar } = useContext(MenuContext);
 	return (
 		<View
 			style={tailwind(
@@ -37,7 +39,12 @@ export default function Header({ navigation }) {
 					(currentScreen === "GameNotes" ||
 						currentScreen === "PlayerNotes") && (
 						<View>
-							<HeaderButton name="search" />
+							<HeaderButton
+								name="search"
+								onPress={() => {
+									showSearchBar();
+								}}
+							/>
 						</View>
 					)}
 			</ButtonContainer>
