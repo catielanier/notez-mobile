@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { View, Text } from "react-native";
 import ButtonContainer from "../elements/ButtonContainer";
 import HeaderButton from "../elements/HeaderButton";
@@ -7,12 +7,10 @@ import localeSelect from "../services/localeSelect";
 import { LanguageContext } from "../contexts/LanguageContext";
 import { UserContext } from "../contexts/UserContext";
 import { title } from "../data/locales";
-import { useNavigationState } from "@react-navigation/native";
 
-export default function Header({ route, navigation }) {
+export default function Header({ navigation }) {
 	const { language } = useContext(LanguageContext);
 	const { user, currentScreen } = useContext(UserContext);
-	console.log(currentScreen);
 	return (
 		<View
 			style={tailwind(
