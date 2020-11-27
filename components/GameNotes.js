@@ -9,7 +9,7 @@ export default function GameNotes() {
 	return (
 		<SideMenu
 			isOpen={searchBar}
-			menu={() => <SearchDrawer type="game" />}
+			menu={() => <SearchDrawer type="game" useNativeDriver={true} />}
 			menuPosition="right"
 		>
 			<ScrollView>

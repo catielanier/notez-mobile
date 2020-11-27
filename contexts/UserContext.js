@@ -61,7 +61,7 @@ const UserContextProvider = (props) => {
 				setUser(id);
 				setLoading(false);
 				setSuccess(true);
-				navigation.navigate("Home");
+				navigation.navigate("Stack", { screen: "GameNotes" });
 			}
 		} catch (e) {
 			setError(e.message);
