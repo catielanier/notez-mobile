@@ -28,6 +28,7 @@ export default function Login({ navigation }) {
 					animating={loading}
 					size="small"
 					color={getColor("orange-500")}
+					style={tailwind("w-8 h-4")}
 				/>
 			</Text>
 			<TextInput
