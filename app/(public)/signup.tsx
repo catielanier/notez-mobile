@@ -106,7 +106,7 @@ export default function SignupScreen() {
         keyboardShouldPersistTaps="handled"
       >
         <Text variant="headlineMedium" style={styles.title}>
-          {t("Create an Account")}
+          {t("header.signup")}
         </Text>
 
         <TextInput
