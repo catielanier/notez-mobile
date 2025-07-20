@@ -11,8 +11,10 @@ import {
 import Constants from "expo-constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useRouter } from "expo-router";
+import { useTranslation } from "react-i18next";
 
 export default function LoginScreen() {
+  const { t } = useTranslation();
   const theme = useTheme();
   const router = useRouter();
   const [email, setEmail] = useState<string>("");
@@ -48,7 +50,7 @@ export default function LoginScreen() {
         </Text>
 
         <TextInput
-          label="Email"
+          label={t("account.email")}
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
@@ -58,7 +60,7 @@ export default function LoginScreen() {
         />
 
         <TextInput
-          label="Password"
+          label={t("account.password")}
           value={password}
           onChangeText={setPassword}
           secureTextEntry={!showPassword}
@@ -85,7 +87,7 @@ export default function LoginScreen() {
           contentStyle={styles.buttonContent}
           style={styles.button}
         >
-          Sign In
+          {t('header.login')}
         </Button>
       </View>
     </KeyboardAvoidingView>
