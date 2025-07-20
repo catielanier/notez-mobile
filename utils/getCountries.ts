@@ -1,7 +1,7 @@
 import { Dropdown } from "@/data/types";
 import axios from "axios";
 
-const getCountries = async (language: string): Promise<Dropdown> => {
+const getCountries = async (language: string): Promise<Dropdown[]> => {
   const res = await axios.get("https://restcountries.com/v3.1/all");
   const unrefinedCountres = res.data;
   const langTwoCharCode: string = language[0] + language[1];
@@ -62,3 +62,5 @@ const getCountries = async (language: string): Promise<Dropdown> => {
   });
   return countryData;
 };
+
+export default getCountries;
