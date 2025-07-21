@@ -18,7 +18,9 @@
     "ios:free": "env-cmd -f .env.local.free expo start --ios",
     "ios:paid": "env-cmd -f .env.local.paid expo start --ios",
     "ios:prod:free": "env-cmd -f .env.prod.free expo start --ios",
-    "ios:prod:paid": "env-cmd -f .env.prod.paid expo start --ios"
+    "ios:prod:paid": "env-cmd -f .env.prod.paid expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
