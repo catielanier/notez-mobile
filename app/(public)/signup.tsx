@@ -79,7 +79,7 @@ export default function SignupScreen() {
 
     try {
       const apiUrl = Constants.expoConfig?.extra?.API_URL;
-      await axios.post(`${apiUrl}/signup`, {
+      await axios.post(`${apiUrl}/users/signup`, {
         email: email.toLowerCase(),
         username,
         realName,

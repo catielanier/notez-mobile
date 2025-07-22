@@ -26,7 +26,7 @@ export default function LoginScreen() {
     setIsLoading(true);
     try {
       const apiUrl = Constants?.expoConfig?.extra?.API_URL;
-      const res = await axios.post(`${apiUrl}login`, {
+      const res = await axios.post(`${apiUrl}/users/login`, {
         email,
         password,
       });
