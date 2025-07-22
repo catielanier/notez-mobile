@@ -26,11 +26,6 @@ export const neonColorsLight = {
 
     outline: '#888888',
 
-    // Text colors (manually applied if needed)
-    // react-native-paper doesn't support text.primary/secondary out of the box
-    // You'll use these in your components via custom styles or overrides
-    textPrimary: '#000000',
-    textSecondary: '#555555',
-    textDisabled: '#888888',
+    onSurfaceVariant: '#555555',
   },
 };

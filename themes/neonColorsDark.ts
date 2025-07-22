@@ -27,8 +27,6 @@ export const neonColorsDark = {
     success: '#00ffcc',
     warning: '#ffcc00',
 
-    textPrimary: '#ffffff',
-    textSecondary: '#c0c0c0',
-    textDisabled: '#808080',
+    onSurfaceVariant: '#c0c0c0',
   },
 };

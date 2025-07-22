@@ -158,8 +158,8 @@ export default function SignupScreen() {
             onSelect={(newValue) => setCountry(newValue ?? "")}
             options={countries}
             menuContentStyle={{ backgroundColor: theme.colors.surface }}
-            menuUpIcon={<Text style={{ color: theme.colors.textPrimary }}>▲</Text>}
-            menuDownIcon={<Text style={{ color: theme.colors.textPrimary }}>▼</Text>}
+            menuUpIcon={<Text style={{ color: theme.colors.onSurface }}>▲</Text>}
+            menuDownIcon={<Text style={{ color: theme.colors.onSurface }}>▼</Text>}
           />
         </View>
 
