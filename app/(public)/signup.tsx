@@ -38,7 +38,6 @@ export default function SignupScreen() {
   // country dropdown state
   const [countries, setCountries] = useState<CountryType[]>([]);
   const [country, setCountry] = useState<string>("");
-  const [showDropdown, setShowDropdown] = useState(false);
 
   // status state
   const [isLoading, setIsLoading] = useState(false);
@@ -158,8 +157,12 @@ export default function SignupScreen() {
             onSelect={(newValue) => setCountry(newValue ?? "")}
             options={countries}
             menuContentStyle={{ backgroundColor: theme.colors.surface }}
-            menuUpIcon={<Text style={{ color: theme.colors.onSurface }}>▲</Text>}
-            menuDownIcon={<Text style={{ color: theme.colors.onSurface }}>▼</Text>}
+            menuUpIcon={
+              <Text style={{ color: theme.colors.onSurface }}>▲</Text>
+            }
+            menuDownIcon={
+              <Text style={{ color: theme.colors.onSurface }}>▼</Text>
+            }
           />
         </View>
 
